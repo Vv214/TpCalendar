@@ -1,0 +1,35 @@
+<form #Form="ngForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        Form submitted ? {{Form.submitted}}
+        Form valid ? {{Form.valid}}
+        Form invalid ? {{Form.invalid}}
+    </div>
+
+
+    <fieldset>
+        <label for="prenom">prenom</label>
+        <input id="prenom" name="prenom" type="text" [(ngModel)]="client.prenom" #prenom="ngModel" required>
+    </fieldset>
+
+    <fieldset>
+        <label for="nom">nom</label>
+        <input id="nom" name="nom" type="text" [(ngModel)]="client.nom" #nom="ngModel" required>
+    </fieldset>
+
+    <fieldset>
+        <label for="message">message</label>
+        <input id="message" name="message" type="text" [(ngModel)]="client.message" #nom="ngModel">
+    </fieldset>
+    <fieldset>
+        <label for="telephone">telephone</label>
+        <input id="telephone" name="telephone" type="number" [(ngModel)]="client.telephone" #nom="ngModel" required>
+    </fieldset>
+    <fieldset>
+        <label for="Email">E-mail</label>
+        <input id="Email" name="Email" type="text" [(ngModel)]="client.email" #nom="ngModel" required>
+    </fieldset>
+
+    <button type="reset">Restaurer</button>
+    <button type="submit">Sauvegarder</button>
+</form>

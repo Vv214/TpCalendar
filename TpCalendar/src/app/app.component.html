@@ -1,2 +1,15 @@
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
+<div id="contentApp">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+  <div>
+    <button (click)="isAdmin=adminChangeMode(isAdmin)">Ajoute le component </button>
+    <p *ngIf="isAdmin===true; else notAdmin">
+
+      <app-form></app-form>
+      <app-daily>
+      </app-daily>
+    </p>
+    <ng-template #notAdmin>
+    </ng-template>
+  </div>
+</div>
