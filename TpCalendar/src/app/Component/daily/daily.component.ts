@@ -13,7 +13,9 @@ export class DailyComponent {
     for (let i = 1; i <= 48; i++) {
       this.creneaux.push(i);
     }
-    //  let day: hour[] = [];
-    //  Date d = new Date();
+  }
+
+  formAppel(): void {
+    console.log('Toto Test ! ');
   }
 }
