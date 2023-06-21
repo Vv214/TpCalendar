@@ -6,3 +6,7 @@
     max-width: 15%;
     border-right: 1px solid black;
 }
+
+#general {
+    display: flex;
+}
