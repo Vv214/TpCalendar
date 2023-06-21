@@ -8,11 +8,11 @@ import { Component, Input } from '@angular/core';
 export class SidebarComponent {
 
   @Input()
-  isAdmin: boolean = false;
+  afficheFormulaire: boolean = false;
 
-  adminChangeMode() {
-    throw new Error('Method not implemented.');
-    //TODO:
+  appelFormulairePriseRdv(afficheFormulaire: boolean): boolean {
+    console.log('afficheFormulaire', afficheFormulaire);
+    return !afficheFormulaire;
   }
   // afficherPlanning() {
 
