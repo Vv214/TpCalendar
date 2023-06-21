@@ -1,4 +1,4 @@
-<form #form="ngForm" (ngSubmit)="onSubmit()">
+<form form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()">
 
     <!-- <div>
         Form submitted ? {{form.submitted}}
@@ -6,67 +6,73 @@
         Form invalid ? {{form.invalid}}
     </div> -->
 
+    <div class="container">
+        <div class="row">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" name="prenom" placeholder="Votre prénom.." type="text" [(ngModel)]="client.prenom"
+                #prenom="ngModel" required>
+        </div>
+        <!-- Message d'erreurs de nom -->
+        <div *ngIf="prenom.errors && myForm.submitted" class="error">
+            <span *ngIf="prenom.errors?.['required']">Le champ prenom est requis</span>
+        </div>
 
-    <fieldset>
-        <label for="prenom">Prenom</label>
-        <input id="prenom" name="prenom" type="text" [(ngModel)]="client.prenom" #prenom="ngModel" required>
-    </fieldset>
-    <!-- Message d'erreurs de nom -->
-    <div *ngIf="prenom.errors" class="error">
-        <span *ngIf="prenom.errors?.['required']">Le champ prenom est requis</span>
-    </div>
+        <div class="row">
+            <label for="nom">Nom</label>
+            <input id="nom" name="nom" placeholder="Votre nom.." type="text" [(ngModel)]="client.nom" #nom="ngModel"
+                required>
+        </div>
+        <!-- Message d'erreurs de nom -->
+        <div *ngIf="nom.errors && myForm.submitted" class="error">
+            <span *ngIf="nom.errors?.['required']">Le champ nom est requis</span>
+        </div>
 
-
-
-    <fieldset>
-        <label for="nom">Nom</label>
-        <input id="nom" name="nom" type="text" [(ngModel)]="client.nom" #nom="ngModel" required>
-    </fieldset>
-    <!-- Message d'erreurs de nom -->
-    <div *ngIf="nom.errors" class="error">
-        <span *ngIf="nom.errors?.['required']">Le champ nom est requis</span>
-    </div>
-
-
-
-    <fieldset>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" type="text" [(ngModel)]="client.message" #message="ngModel"
-            maxlength="100" cols="30" rows="8"></textarea>
+        <div class="row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Votre message.." type="text" [(ngModel)]="client.message"
+                #message="ngModel" style="height: 75px;"></textarea>
+        </div>
         <!-- <input id="message" name="message" type="text" [(ngModel)]="client.message" #message="ngModel" maxlength="100"> -->
-    </fieldset>
-    <!-- Message d'erreurs de message -->
-    <div *ngIf="message.errors">
-        <!-- <span *ngIf="message.errors?.['required']" >Le titre est requis</span> -->
-        <!-- <span *ngIf="message.errors?.['minlength']">La longueur minimale doit être supérieure à 5</span> -->
-        <span *ngIf="message.errors?.['maxlength']" class="error">La longueur maximale du message doit être inférieure à
-            100 </span>
-    </div>
-    <fieldset>
-        <label for="telephone">Telephone</label>
-        <input id="telephone" name="telephone" type="number" [(ngModel)]="client.telephone" #telephone="ngModel"
-            required>
-    </fieldset>
-    <!-- Message d'erreurs de telephone -->
-    <div *ngIf="telephone.errors" class="error">
-        <span *ngIf="telephone.errors?.['required']">Le champ telephone est requis</span>
-    </div>
-    <fieldset>
-        <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" [(ngModel)]="client.email" #email="ngModel" required>
-    </fieldset>
-    <!-- Message d'erreurs de email -->
-    <div *ngIf="email.errors" class="error">
-        <span *ngIf="email.errors?.['required']">Le champ e-mail est requis</span>
-    </div>
+        <!-- Message d'erreurs de message -->
+        <div *ngIf="message.errors">
+            <!-- <span *ngIf="message.errors?.['required']" >Le titre est requis</span> -->
+            <!-- <span *ngIf="message.errors?.['minlength']">La longueur minimale doit être supérieure à 5</span> -->
+            <span *ngIf="message.errors?.['maxlength']" class="error">La longueur maximale du message doit être
+                inférieure à
+                100 </span>
+        </div>
 
-    <button type="reset">Restaurer</button>
-    <button type="submit" (click)="afficheCreneau=appelAffichageCreneau(afficheCreneau)">Choisir votre créneau</button>
-    <div>
-        <p *ngIf="afficheCreneau===true; else notAfficheCreneau">
-            <app-daily></app-daily>
-        </p>
-        <ng-template #notAfficheCreneau>
-        </ng-template>
+        <div class="row">
+            <label for="telephone">Téléphone</label>
+            <input id="telephone" name="telephone" placeholder="Votre numéro.." type="text"
+                [(ngModel)]="client.telephone" #telephone="ngModel" required>
+        </div>
+        <!-- Message d'erreurs de telephone -->
+        <div *ngIf="telephone.errors && myForm.submitted" class="error">
+            <span *ngIf="telephone.errors?.['required']">Le champ telephone est requis</span>
+        </div>
+
+        <div class="row">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" placeholder="Votre mail.." type="email" [(ngModel)]="client.email"
+                #email="ngModel" required>
+        </div>
+        <!-- Message d'erreurs de email -->
+        <div *ngIf="email.errors && myForm.submitted" class="error">
+            <span *ngIf="email.errors?.['required']">Le champ e-mail est requis</span>
+        </div>
+
+        <div class="row">
+            <button class="button" type="submit" (click)="afficheCreneau=appelAffichageCreneau(afficheCreneau)">Choisir
+                votre
+                créneau</button>
+        </div>
+        <div *ngIf="myForm.valid && myForm.submitted">
+            <p *ngIf="afficheCreneau===true; else notAfficheCreneau">
+                <app-daily></app-daily>
+            </p>
+            <ng-template #notAfficheCreneau>
+            </ng-template>
+        </div>
     </div>
 </form>

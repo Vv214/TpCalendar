@@ -7,14 +7,14 @@ import { Client } from 'src/app/Service/Client';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  client: Client = new Client('', '', '', 0, '');
+  client: Client = new Client('', '', '', '', '');
   constructor() { }
   onSubmit() {
     console.log('nouveau rendez-vous' + this.client.prenom + '  '
       + this.client.nom + '  '
       + this.client.message + '  '
       + this.client.email + ' '
-      + this.client.telephone
+      + this.client.telephone + ' '
     );
   }
 
