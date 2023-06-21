@@ -1,10 +1,10 @@
 <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-    <div>
+    <!-- <div>
         Form submitted ? {{form.submitted}}
         Form valid ? {{form.valid}}
         Form invalid ? {{form.invalid}}
-    </div>
+    </div> -->
 
 
     <fieldset>
@@ -12,7 +12,7 @@
         <input id="prenom" name="prenom" type="text" [(ngModel)]="client.prenom" #prenom="ngModel" required>
     </fieldset>
     <!-- Message d'erreurs de nom -->
-    <div *ngIf="prenom.errors"  class="error">
+    <div *ngIf="prenom.errors" class="error">
         <span *ngIf="prenom.errors?.['required']">Le champ prenom est requis</span>
     </div>
 
@@ -23,7 +23,7 @@
         <input id="nom" name="nom" type="text" [(ngModel)]="client.nom" #nom="ngModel" required>
     </fieldset>
     <!-- Message d'erreurs de nom -->
-    <div *ngIf="nom.errors"  class="error">
+    <div *ngIf="nom.errors" class="error">
         <span *ngIf="nom.errors?.['required']">Le champ nom est requis</span>
     </div>
 
@@ -31,32 +31,42 @@
 
     <fieldset>
         <label for="message">Message</label>
-        <textarea id="message" name="message" type="text" [(ngModel)]="client.message" #message="ngModel" maxlength="100" cols="30" rows="8"></textarea>
+        <textarea id="message" name="message" type="text" [(ngModel)]="client.message" #message="ngModel"
+            maxlength="100" cols="30" rows="8"></textarea>
         <!-- <input id="message" name="message" type="text" [(ngModel)]="client.message" #message="ngModel" maxlength="100"> -->
     </fieldset>
-      <!-- Message d'erreurs de message -->
-    <div *ngIf="message.errors"  >
+    <!-- Message d'erreurs de message -->
+    <div *ngIf="message.errors">
         <!-- <span *ngIf="message.errors?.['required']" >Le titre est requis</span> -->
         <!-- <span *ngIf="message.errors?.['minlength']">La longueur minimale doit être supérieure à 5</span> -->
-        <span *ngIf="message.errors?.['maxlength']" class="error" >La longueur maximale du message doit être inférieure à 100 </span>
+        <span *ngIf="message.errors?.['maxlength']" class="error">La longueur maximale du message doit être inférieure à
+            100 </span>
     </div>
     <fieldset>
         <label for="telephone">Telephone</label>
-        <input id="telephone" name="telephone" type="number" [(ngModel)]="client.telephone" #telephone="ngModel" required>
+        <input id="telephone" name="telephone" type="number" [(ngModel)]="client.telephone" #telephone="ngModel"
+            required>
     </fieldset>
     <!-- Message d'erreurs de telephone -->
-    <div *ngIf="telephone.errors"  class="error">
+    <div *ngIf="telephone.errors" class="error">
         <span *ngIf="telephone.errors?.['required']">Le champ telephone est requis</span>
     </div>
     <fieldset>
         <label for="email">E-mail</label>
         <input id="email" name="email" type="email" [(ngModel)]="client.email" #email="ngModel" required>
     </fieldset>
-      <!-- Message d'erreurs de email -->
-      <div *ngIf="email.errors"  class="error">
+    <!-- Message d'erreurs de email -->
+    <div *ngIf="email.errors" class="error">
         <span *ngIf="email.errors?.['required']">Le champ e-mail est requis</span>
     </div>
 
     <button type="reset">Restaurer</button>
-    <button type="submit">Sauvegarder</button>
+    <button type="submit" (click)="afficheCreneau=appelAffichageCreneau(afficheCreneau)">Choisir votre créneau</button>
+    <div>
+        <p *ngIf="afficheCreneau===true; else notAfficheCreneau">
+            <app-daily></app-daily>
+        </p>
+        <ng-template #notAfficheCreneau>
+        </ng-template>
+    </div>
 </form>

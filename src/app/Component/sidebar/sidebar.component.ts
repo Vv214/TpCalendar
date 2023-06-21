@@ -14,8 +14,4 @@ export class SidebarComponent {
     console.log('afficheFormulaire', afficheFormulaire);
     return !afficheFormulaire;
   }
-  // afficherPlanning() {
-
-  // }
-
 }

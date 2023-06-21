@@ -1,12 +1,10 @@
 <div id="general">
     <div id="sidebar">
         <button (click)="afficheFormulaire=appelFormulairePriseRdv(afficheFormulaire)">Prise de RDV</button>
-
         <div>Calendrier de RDV</div>
     </div>
     <div>
         <p *ngIf="afficheFormulaire===true; else notAfficheFormulaire">
-
             <app-form></app-form>
         </p>
         <ng-template #notAfficheFormulaire>

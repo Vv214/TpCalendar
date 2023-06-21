@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Client } from 'src/app/Service/Client';
 
 @Component({
@@ -18,4 +18,11 @@ export class FormComponent {
     );
   }
 
+  @Input()
+  afficheCreneau: boolean = false;
+
+  appelAffichageCreneau(afficheCreneau: boolean): boolean {
+    console.log('afficheCreneau', afficheCreneau);
+    return !afficheCreneau;
+  }
 }
