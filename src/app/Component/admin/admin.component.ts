@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Client } from 'src/model/Client';
 import { rendezVous } from 'src/model/rendez_vous';
 import { lesRendezVous } from 'src/model/lesRendezVous';
+
 import { LesRendezVousService } from 'src/app/Service/LesRendezVousService';
 @Component({
   selector: 'app-admin',
@@ -10,6 +11,8 @@ import { LesRendezVousService } from 'src/app/Service/LesRendezVousService';
 })
 export class AdminComponent implements OnInit{
   listeRendezVous: rendezVous[] = [];
+  nameClient:string ='';
+  rdvselectione:boolean =true;
   constructor( private rendezVousService: LesRendezVousService){}
   ngOnInit(): void {
      // Récupérer la liste de rendez-vous du service partagé
@@ -24,5 +27,19 @@ export class AdminComponent implements OnInit{
   consulterRendezVous(rdv: rendezVous) {
     console.log("Détails du rendez-vous : ", rdv);
     // Implémentez ici la logique pour afficher les détails du rendez-vous ou le modifier/supprimer
+  }
+  afficherFormulaire(){
+
+  }
+  findRDVbyClientName():rendezVous[]{
+    let rdv:rendezVous[] =[];
+    return rdv;
+  }
+
+  editerRDV(rdviod:number):void{
+    const rendezvous = this.listeRendezVous.find(rdv =>rdv.id === rdviod);
+    if(rendezvous){
+
+    }
   }
 }

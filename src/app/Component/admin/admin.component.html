@@ -1,12 +1,39 @@
 <p>Acceuil admin</p>
+
+<div *ngIf="rdvselectione" >
+    <div class="formEdit">
+    <h3>editer rendez vous</h3>
+    <form action="">
+        <input type="text" name="" id="">
+    </form>
+</div>
+</div>
+
+
+
 <button (click)="listerLesRendezVous()">liter les rendez-vous</button>
 <div *ngIf="afficherRendezVous">
 <div *ngFor="let rdv of listeRendezVous" (click)="consulterRendezVous(rdv)"  class="detailRDV">
+    
+    <span><em>id :{{ rdv.id }}</em></span><br>
+    <span><em>nom :{{ rdv.client.nom }}</em></span><br>
+    <span> 
+        date :{{ rdv.creneau.date}}h</span><br> 
+        <span><button (click)="editerRDV(rdv.id)">Editer</button></span>
+        <span><button>Supprimer</button></span>
+</div>
+
+</div>
+
+<button (click)="afficherFormulaire()">rechercher rendez vous</button>
+<form  (ngSubmit)="findRDVbyClientName()">
+    <input type="text" nameClient="name" >
+    <input type="submit">
+</form>
+<!-- <div *ngFor="let rdv of listeRendezVous" (click)="consulterRendezVous(rdv)"  class="detailRDV">
+    <span>nom client : {{ rdv.client.id }}</span>
+    <span></span>
     <span>nom client : {{ rdv.client.nom }}</span>
     <span>Créneau : 
-        {{ rdv.creneau.annee }}/
-        {{ rdv.creneau.mois }}/
-        {{ rdv.creneau.jour }} -
-         {{ rdv.creneau.heure }}h</span> 
-</div>
-</div>
+        {{ rdv.creneau.date}}</span> 
+</div> -->
