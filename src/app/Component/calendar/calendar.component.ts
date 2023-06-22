@@ -1,32 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CalendarService } from 'src/app/Service/calendar.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent {
-  grilleSemaine: Array<string> = ['Monday', 'Tuesday', 'Wednesday', 'Thursday',
-    'Friday', 'Saturday', 'Sunday'];
-  grilleMois: Array<string> = ['January', 'February', 'March', 'April', 'May',
-    'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  nombreJoursMoisAn: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  today: Date = new Date();
-  moisActuel: string = this.grilleMois[(this.today.getMonth())];
-  nombreJoursMois: number = this.nombreJoursMoisAn[(this.today.getMonth())];
 
-  tableauNombreJoursMoisEncours!: Array<string>;
+export class CalendarComponent implements OnInit {
 
-  tableauMoisEncrours(nombreJoursMois: number): Array<string> {
-    let tab = [''];
-    for (let i = 0; i < nombreJoursMois; i++) {
-      tab[i] = (i + 1) + '';
-    }
-    return tab
+  grilleSemaine!: string[]
+  moisActuel!: string
+  nombreJoursMois!: number
+  tableauNombreJoursMoisEncours!: string[]
+
+  constructor(private calendarService: CalendarService) {
   }
 
   ngOnInit(): void {
-    this.tableauNombreJoursMoisEncours = this.tableauMoisEncrours(this.nombreJoursMois);
+    // INIT SERVICE TABLE
+    this.calendarService.initValues();
+    // INIT COMPONENT ATTRIBUTE
+    this.grilleSemaine = this.calendarService.grilleSemaine;
+    this.moisActuel = this.calendarService.moisActuel;
+    this.nombreJoursMois = this.calendarService.nombreJoursMois;
+    this.tableauNombreJoursMoisEncours = this.calendarService.tableauMoisEncrours();
   }
 }
 

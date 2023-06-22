@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from 'src/model/Client';
 
 
 @Component({
@@ -8,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   createDate!: Date;
+  client: Client = new Client('', '', '', 0, '', true);
   ngOnInit(): void {
     this.createDate = new Date();
+  }
+
+  affichageAdmin(isAdmin: boolean): boolean {
+    console.log('affichage admin', isAdmin);
+    return !isAdmin;
   }
 }

@@ -5,6 +5,7 @@ import { Creneau } from 'src/model/Creneau';
 import { lesRendezVous } from 'src/model/lesRendezVous';
 import { rendezVous } from 'src/model/rendez_vous';
 
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -14,6 +15,11 @@ export class FormComponent {
   idClient:number = 0;
   idRendezVous:number = 0;
   idCreneau :number = 0;
+  client: Client = new Client('', '', '', 0, '', false);
+  constructor() { }
+  onSubmit() {
+    );
+  }
 
   @Input()
   afficheCreneau: boolean = false;

@@ -29,5 +29,6 @@ export class Client {
 
     setId(id:number):void {
         this.id =id;
+        this.isAdmin = isAdmin;
     }
 }
