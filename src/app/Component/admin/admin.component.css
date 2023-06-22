@@ -1,4 +1,7 @@
 .detailRDV {
-cursor: pointer;
-background-color: aqua;
+/* cursor: pointer; */
+    background-color: aqua;
+}
+.formEdit{
+    background-color: yellow;
 }
