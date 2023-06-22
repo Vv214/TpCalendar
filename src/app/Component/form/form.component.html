@@ -69,7 +69,7 @@
         </div>
         <div *ngIf="myForm.valid && myForm.submitted">
             <p *ngIf="afficheCreneau===true; else notAfficheCreneau">
-                <app-daily></app-daily>
+                <app-calendar></app-calendar>
             </p>
             <ng-template #notAfficheCreneau>
             </ng-template>

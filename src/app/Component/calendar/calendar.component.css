@@ -1,28 +1,56 @@
-.dayWeek {
-    background-color: red;
-    border-right: 1px solid black;
+.week-container,
+.day-container {
+    font-weight: 600;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(7, auto);
+    gap: 5px;
 }
 
-.affichageSemaine {
+.day-container div:first-child {
+    grid-column: 1;
+}
+
+.divcss {
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    padding: 0px;
+}
+
+.day {
+    margin: 5px;
+    font-weight: 600;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: white;
+    border-radius: 5px;
+    background-color: #adadad;
+    height: 100px;
+    width: 100px;
+}
+
+/* .day-text {
+
+} */
+
+.jour {
+    margin: 5px;
     display: flex;
-    border: 1px solid black;
-    justify-content: space-around;
-}
-
-.month {
+    justify-content: center;
     align-items: center;
+    font-weight: 600;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: white;
+    border-radius: 5px;
+    background-color: #adadad;
+    height: 50px;
+    width: 100px;
 }
 
-.dayMonth {
-    width: 60px;
-    height: 60px;
-    border: 1px solid violet;
-}
-
-.dayWeeks2 {
-    display: flex;
-    flex-wrap: wrap;
-
-    min-height: 100%;
-
+.day:hover {
+    color: black;
+    border: solid, black;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }

@@ -1,17 +1,17 @@
-<div>
+<!-- <div class="placeholder">
     <p class="month">{{moisActuel}}</p>
     <p>{{nombreJoursMois}}</p>
-    <div class="affichageSemaine">
-        <div *ngFor="let jour of grilleSemaine" class="dayWeek">
-            <p>{{ jour }} </p>
+</div> -->
+<div class="divcss">
+    <div class="week-container">
+        <div *ngFor="let jour of grilleSemaine" class="name-week">
+            <p class="jour">{{ jour }} </p>
         </div>
     </div>
-    <div>
-        <div class="dayWeeks2">
-            <div *ngFor="let jour of tableauNombreJoursMoisEncours">
-                <div *ngIf="+jour%7" class="TEst"><br>
-                    <p class="dayMonth">{{jour}}</p>
-                </div>
+    <div class="divcss">
+        <div class="day-container">
+            <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours">
+                <p class="day-text">{{jour}}</p>
             </div>
         </div>
     </div>
