@@ -1,0 +1,12 @@
+<p>Acceuil admin</p>
+<button (click)="listerLesRendezVous()">liter les rendez-vous</button>
+<div *ngIf="afficherRendezVous">
+<div *ngFor="let rdv of listeRendezVous" (click)="consulterRendezVous(rdv)"  class="detailRDV">
+    <span>nom client : {{ rdv.client.nom }}</span>
+    <span>Créneau : 
+        {{ rdv.creneau.annee }}/
+        {{ rdv.creneau.mois }}/
+        {{ rdv.creneau.jour }} -
+         {{ rdv.creneau.heure }}h</span> 
+</div>
+</div>
