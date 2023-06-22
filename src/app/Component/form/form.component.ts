@@ -12,30 +12,26 @@ import { rendezVous } from 'src/model/rendez_vous';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  idClient:number = 0;
-  idRendezVous:number = 0;
-  idCreneau :number = 0;
-  client: Client = new Client('', '', '', 0, '', false);
-  constructor() { }
-  onSubmit() {
-    );
-  }
+  idClient: number = 0;
+  idRendezVous: number = 0;
+  idCreneau: number = 0;
+  client: Client = new Client('', '', '', '', false, '');
 
   @Input()
   afficheCreneau: boolean = false;
 
-  client: Client = new Client('', '', '', '',false, '');
+  client2: Client = new Client('', '', '', '', false, '');
   creneau: Creneau = new Creneau(new Date());
 
- 
+
   lst: lesRendezVous = new lesRendezVous();
-  listeRDV:rendezVous[] = this.lst.listeRendezVous;
+  listeRDV: rendezVous[] = this.lst.listeRendezVous;
   // in jection du servive 
-  constructor(private rendezVousService: LesRendezVousService) {}
-  ngOnInit(): void {}
+  constructor(private rendezVousService: LesRendezVousService) { }
+  ngOnInit(): void { }
 
   onSubmit() {
-    const client: Client = new Client(this.client.prenom, this.client.nom, this.client.message, this.client.telephone,false, this.client.email);
+    const client: Client = new Client(this.client.prenom, this.client.nom, this.client.message, this.client.telephone, false, this.client.email);
     client.setId(this.idClient);
     this.idClient++;
     const creneau: Creneau = new Creneau(new Date());
@@ -44,17 +40,17 @@ export class FormComponent {
     const rdv: rendezVous = new rendezVous(creneau, client);
     rdv.setId(this.idRendezVous);
     this.idRendezVous++;
-  
+
     // Ajouter le rdv  à la liste dans le service partagé
     this.rendezVousService.listeRendezVous.push(rdv);
-  
+
     // rein,istialiser le formulaire 
-    this.client = new Client('', '', '','',false, '');
+    this.client = new Client('', '', '', '', false, '');
     this.creneau = new Creneau(new Date());
   }
 
-  
-  addCrenaux(){
+
+  addCrenaux() {
   }
   // client: Client = new Client('', '', '', '', '');
   // constructor() { }

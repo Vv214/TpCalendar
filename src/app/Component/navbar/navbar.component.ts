@@ -9,7 +9,7 @@ import { Client } from 'src/model/Client';
 })
 export class NavbarComponent implements OnInit {
   createDate!: Date;
-  client: Client = new Client('', '', '', 0, '', true);
+  client: Client = new Client('', '', '', '', true, '');
   ngOnInit(): void {
     this.createDate = new Date();
   }
