@@ -1,0 +1,28 @@
+.dayWeek {
+    background-color: red;
+    border-right: 1px solid black;
+}
+
+.affichageSemaine {
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-around;
+}
+
+.month {
+    align-items: center;
+}
+
+.dayMonth {
+    width: 60px;
+    height: 60px;
+    border: 1px solid violet;
+}
+
+.dayWeeks2 {
+    display: flex;
+    flex-wrap: wrap;
+
+    min-height: 100%;
+
+}
