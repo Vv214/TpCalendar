@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Client } from 'src/app/Service/Client';
+import { Client } from 'src/model/Client';
 
 @Component({
   selector: 'app-form',
@@ -7,7 +7,7 @@ import { Client } from 'src/app/Service/Client';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  client: Client = new Client('', '', '', '', '');
+  client: Client = new Client('', '', '', 0, '', false);
   constructor() { }
   onSubmit() {
     console.log('nouveau rendez-vous' + this.client.prenom + '  '
