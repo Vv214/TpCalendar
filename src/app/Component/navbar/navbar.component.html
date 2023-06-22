@@ -2,6 +2,6 @@
     <div id="logo">Logo</div>
     <div id="date">{{createDate | date : 'dd MMMM YYYY' }}</div>
     <div>
-        <button class="button" id="button">Login</button>
+        <button class="button" id="button" (click)="client.isAdmin=affichageAdmin(client.isAdmin)">Login</button>
     </div>
 </div>
