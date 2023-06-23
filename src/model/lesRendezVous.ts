@@ -48,6 +48,7 @@ export class lesRendezVous {
     }
 
  }
+ 
  clearAllRendezVous(){
     this.listeRendezVous.length = 0;
  }

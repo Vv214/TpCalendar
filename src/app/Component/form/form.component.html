@@ -1,5 +1,4 @@
 <form form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()">
-
     <!-- <div>
         Form submitted ? {{form.submitted}}
         Form valid ? {{form.valid}}
@@ -71,8 +70,7 @@
             <p *ngIf="afficheCreneau===true; else notAfficheCreneau">
                 <app-calendar></app-calendar>
             </p>
-            <ng-template #notAfficheCreneau>
-            </ng-template>
+            <ng-template #notAfficheCreneau></ng-template>
         </div>
     </div>
 </form>
