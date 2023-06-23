@@ -2,17 +2,34 @@
     <p class="month">{{moisActuel}}</p>
     <p>{{nombreJoursMois}}</p>
 </div> -->
-<div class="divcss">
+
+
+<div class="calendar-container">
+    <!-- A afficher nico stp merci  -->
     <div class="week-container">
-        <div *ngFor="let jour of grilleSemaine" class="name-week">
-            <p class="jour">{{ jour }} </p>
+        <div class="divcss">
+            <div>
+                <button (click)="changeMoisPrecedent(moisPrecedent, annee)">
+                    << </button>
+            </div>
+            <div>{{grilleMois[moisAAfficher] }} </div>
+            <div>{{annee}} </div>
+            <div>
+                <button (click)="changeMoisSuivant(moisSuivant, annee)">
+                    >> </button>
+            </div>
+            <div *ngFor="let jour of grilleSemaine" class="name-week">
+                <p class="jour">{{ jour }} </p>
+            </div>
         </div>
-    </div>
-    <div class="divcss">
-        <div class="day-container">
-            <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours">
-                <p class="day-text">{{jour}}</p>
+        <div class="divcss">
+            <div class="day-container">
+                <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours; let i = index"
+                    [style.grid-column]="i === 0 ? premierJourMois : ''">
+                    <div>
+                        <p class="day-text">{{jour}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>

@@ -10,12 +10,46 @@ import { CalendarService } from 'src/app/Service/calendar.service';
 export class CalendarComponent implements OnInit {
 
   grilleSemaine!: string[]
-  moisActuel!: string
-  nombreJoursMois!: number
+  moisActuel!: number
   tableauNombreJoursMoisEncours!: string[]
+  nombreJoursMois!: number;
+  moisPrecedent!: number;
+  moisSuivant!: number;
+  moisAAfficher!: number;
+  premierJourMois!: number;
+  annee!: number;
+  grilleMois!: string[];
+  nombreJoursMoisAn!: Array<number>;
 
   constructor(private calendarService: CalendarService) {
   }
+
+  changeMoisPrecedent(mois: number, annee: number): void {
+    this.calendarService.changeMoisPrecedent(mois, annee);
+    this.moisPrecedent = this.calendarService.moisPrecedent;
+    this.moisSuivant = this.calendarService.moisSuivant;
+    this.moisAAfficher = this.calendarService.moisAAfficher;
+    this.nombreJoursMois = this.calendarService.nombreJoursMois;
+    this.premierJourMois = this.calendarService.premierJourMois;
+    this.tableauNombreJoursMoisEncours = this.calendarService.tableauMoisEncrours();
+    this.annee = this.calendarService.annee;
+    this.nombreJoursMoisAn = this.calendarService.nombreJoursMoisAn;
+  }
+
+  changeMoisSuivant(mois: number, annee: number): void {
+    this.calendarService.changeMoisSuivant(mois, annee);
+    this.moisPrecedent = this.calendarService.moisPrecedent;
+    this.moisSuivant = this.calendarService.moisSuivant;
+    this.moisAAfficher = this.calendarService.moisAAfficher;
+    this.nombreJoursMois = this.calendarService.nombreJoursMois;
+    this.premierJourMois = this.calendarService.premierJourMois;
+    this.tableauNombreJoursMoisEncours = this.calendarService.tableauMoisEncrours();
+    this.annee = this.calendarService.annee;
+    this.nombreJoursMoisAn = this.calendarService.nombreJoursMoisAn;
+  }
+  // affichageJour(){
+  // Todo
+  // }
 
   ngOnInit(): void {
     // INIT SERVICE TABLE
@@ -25,6 +59,12 @@ export class CalendarComponent implements OnInit {
     this.moisActuel = this.calendarService.moisActuel;
     this.nombreJoursMois = this.calendarService.nombreJoursMois;
     this.tableauNombreJoursMoisEncours = this.calendarService.tableauMoisEncrours();
+    this.moisPrecedent = this.calendarService.moisPrecedent;
+    this.moisSuivant = this.calendarService.moisSuivant;
+    this.premierJourMois = this.calendarService.premierJourMois;
+    this.moisAAfficher = this.calendarService.moisAAfficher;
+    this.annee = this.calendarService.annee;
+    this.grilleMois = this.calendarService.grilleMois;
   }
 }
 

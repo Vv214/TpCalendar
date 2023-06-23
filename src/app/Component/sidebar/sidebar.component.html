@@ -1,14 +1,15 @@
-<div id="general">
-    <div id="sidebar">
-        <button class="button" (click)="afficheFormulaire=appelFormulairePriseRdv(afficheFormulaire)">Prise de
-            RDV</button>
-        <div>Calendrier de RDV</div>
-    </div>
-    <div>
-        <p *ngIf="afficheFormulaire===true; else notAfficheFormulaire">
-            <app-form></app-form>
-        </p>
-        <ng-template #notAfficheFormulaire>
-        </ng-template>
+<div class="container">
+    <div id="general">
+        <div id="sidebar">
+            <button class="button" (click)="appelFormulairePriseRdv()">Prise de
+                RDV</button>
+        </div>
     </div>
 </div>
+<!-- <div>
+       <p *ngIf="afficheFormulaire===true; else notAfficheFormulaire">
+        <app-form></app-form>
+    </p>
+    <ng-template #notAfficheFormulaire>
+    </ng-template>
+</div> -->

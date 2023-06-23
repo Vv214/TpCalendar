@@ -9,6 +9,7 @@ import { FormComponent } from './Component/form/form.component';
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './Component/admin/admin.component';
 import { CalendarComponent } from './Component/calendar/calendar.component';
+import { FooterComponent } from './Component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CalendarComponent } from './Component/calendar/calendar.component';
     SidebarComponent,
     FormComponent,
     CalendarComponent,
-    AdminComponent
+    AdminComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,
