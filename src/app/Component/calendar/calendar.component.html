@@ -3,13 +3,21 @@
     <p>{{nombreJoursMois}}</p>
 </div> -->
 
-<div>
-    <button (click)="changeMonth(moisPrecedent)">
-        << </button>
-</div>
+
 <div class="calendar-container">
-    <div class="divcss">
-        <div class="week-container">
+    <!-- A afficher nico stp merci  -->
+    <div class="week-container">
+        <div class="divcss">
+            <div>
+                <button (click)="changeMoisPrecedent(moisPrecedent, annee)">
+                    << </button>
+            </div>
+            <div>{{grilleMois[moisAAfficher] }} </div>
+            <div>{{annee}} </div>
+            <div>
+                <button (click)="changeMoisSuivant(moisSuivant, annee)">
+                    >> </button>
+            </div>
             <div *ngFor="let jour of grilleSemaine" class="name-week">
                 <p class="jour">{{ jour }} </p>
             </div>

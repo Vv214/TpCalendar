@@ -14,7 +14,7 @@ export class CalendarService {
   moisSuivant: number;
   premierJourMois: number;
   moisAAfficher: number;
-  year: number;
+  annee: number;
 
   constructor() {
     this.grilleSemaine = ['Monday', 'Tuesday', 'Wednesday', 'Thursday',
@@ -22,11 +22,11 @@ export class CalendarService {
     this.grilleMois = ['January', 'February', 'March', 'April', 'May',
       'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.nombreJoursMoisAn = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    this.today = new Date();
+    this.today = new Date(2023, 2);
     this.moisActuel = this.today.getMonth();
     this.moisAAfficher = this.moisActuel;
-    this.year = this.today.getFullYear();
-    this.premierJourMois = new Date(this.year, this.moisAAfficher).getDay()
+    this.annee = this.today.getFullYear();
+    this.premierJourMois = new Date(this.annee, this.moisAAfficher).getDay()
     this.nombreJoursMois = this.nombreJoursMoisAn[this.moisAAfficher + 1];
     this.moisPrecedent = this.moisActuel - 1;
     this.moisSuivant = this.moisActuel + 1;
@@ -47,15 +47,13 @@ export class CalendarService {
     return tab;
   }
 
-  changeMonth(mois: number): void {
+  changeMoisPrecedent(mois: number, annee: number): void {
+    if (annee % 4 === 0) {
+      this.nombreJoursMoisAn[1] = 29;
+    }
     if (mois === -1) {
-      this.year = this.year - 1;
+      this.annee = this.annee - 1;
       this.moisAAfficher = 11;
-      this.moisPrecedent = 10;
-      this.moisSuivant = 0;
-    } else if (mois === 12) {
-      this.year = this.year + 1;
-      this.moisAAfficher = mois;
       this.moisPrecedent = 10;
       this.moisSuivant = 0;
     } else {
@@ -64,8 +62,27 @@ export class CalendarService {
       this.moisSuivant = mois + 1;
     }
     this.nombreJoursMois = this.nombreJoursMoisAn[this.moisAAfficher];
-    this.premierJourMois = new Date(this.year, this.moisAAfficher + 1).getDay()
+    this.premierJourMois = new Date(this.annee, this.moisAAfficher).getDay();
+    console.log("this.moisAAfficher, this.moisPrecedent, this.moisSuivant, this.nombreJoursMois, this.annee",
+      this.moisAAfficher, this.moisPrecedent, this.moisSuivant, this.nombreJoursMois, this.annee);
+  }
 
-    console.log(mois, this.moisAAfficher, this.moisPrecedent, this.moisSuivant);
+  changeMoisSuivant(mois: number, annee: number): void {
+    if (annee % 4 === 0) {
+      this.nombreJoursMoisAn[1] = 29;
+    } else
+      this.nombreJoursMoisAn[1] = 28;
+    if (mois === 12) {
+      this.annee = this.annee + 1;
+      this.moisAAfficher = 0;
+      this.moisPrecedent = 11;
+      this.moisSuivant = 1;
+    } else {
+      this.moisAAfficher = mois;
+      this.moisPrecedent = mois - 1;
+      this.moisSuivant = mois + 1;
+    }
+    this.nombreJoursMois = this.nombreJoursMoisAn[this.moisAAfficher];
+    this.premierJourMois = new Date(this.annee, this.moisAAfficher).getDay();
   }
 }
