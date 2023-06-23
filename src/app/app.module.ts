@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './Component/admin/admin.component';
 import { CalendarComponent } from './Component/calendar/calendar.component';
 import { FooterComponent } from './Component/footer/footer.component';
+import { ROUTES } from './app.routes';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { FooterComponent } from './Component/footer/footer.component';
   imports: [
     FormsModule,
     BrowserModule,
-
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/model/Client';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { Client } from 'src/model/Client';
 export class NavbarComponent implements OnInit {
   createDate!: Date;
   client: Client = new Client('', '', '', '', true, '');
+
+  constructor(private router: Router) { }
   ngOnInit(): void {
     this.createDate = new Date();
   }
@@ -17,5 +20,9 @@ export class NavbarComponent implements OnInit {
   affichageAdmin(isAdmin: boolean): boolean {
     console.log('affichage admin', isAdmin);
     return !isAdmin;
+  }
+
+  admin() {
+    this.router.navigate(['/', 'admin']);
   }
 }

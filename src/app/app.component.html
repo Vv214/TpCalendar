@@ -1,15 +1,7 @@
-
 <div>
   <app-navbar class="navbar"></app-navbar>
   <div class="container">
-    <div class="sidebar-container">
-      <app-sidebar (clickRdv)="displayForm($event)" class="sidebar"></app-sidebar>
-    </div>
-    <div *ngIf="printForm">
-      <app-form></app-form>
-    </div>
+    <app-sidebar></app-sidebar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
-</div>
-
-<app-calendar></app-calendar>
