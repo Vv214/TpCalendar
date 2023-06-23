@@ -1,5 +1,12 @@
-<div id="contentApp">
-  <app-navbar></app-navbar>
-  <app-sidebar></app-sidebar>
+<div>
+  <app-navbar class="navbar"></app-navbar>
+  <div class="container">
+    <div class="ouais">
+      <app-sidebar (clickRdv)="displayForm($event)" class="sidebar"></app-sidebar>
+    </div>
+    <div *ngIf="printForm">
+      <app-form></app-form>
+    </div>
+  </div>
   <app-admin></app-admin>
 </div>

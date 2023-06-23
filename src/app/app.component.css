@@ -1,1 +1,11 @@
-#contentApp {}
+.container {
+    display: flex;
+}
+
+.ouais {
+    width: 300px;
+}
+
+.sidebar {
+    width: 100px;
+}

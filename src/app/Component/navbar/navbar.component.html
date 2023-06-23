@@ -1,7 +1,7 @@
 <div id="content">
-    <div id="logo">Logo</div>
+    <div id="logo">Wild Code Calendar</div>
     <div id="date">{{createDate | date : 'dd MMMM YYYY' }}</div>
-    <div>
-        <button class="button" id="button" (click)="client.isAdmin=affichageAdmin(client.isAdmin)">Login</button>
+    <div class="buttonDiv">
+        <button class="button" (click)="client.isAdmin=affichageAdmin(client.isAdmin)">Login</button>
     </div>
 </div>
