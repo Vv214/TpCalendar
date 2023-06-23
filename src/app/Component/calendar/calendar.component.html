@@ -2,6 +2,11 @@
     <p class="month">{{moisActuel}}</p>
     <p>{{nombreJoursMois}}</p>
 </div> -->
+
+<div>
+    <button (click)="changeMonth(moisPrecedent)">
+        << </button>
+</div>
 <div class="calendar-container">
     <div class="divcss">
         <div class="week-container">
@@ -11,10 +16,12 @@
         </div>
         <div class="divcss">
             <div class="day-container">
-                <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours">
-                    <p class="day-text">{{jour}}</p>
+                <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours; let i = index"
+                    [style.grid-column]="i === 0 ? premierJourMois : ''">
+                    <div>
+                        <p class="day-text">{{jour}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
