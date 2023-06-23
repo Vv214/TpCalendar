@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,9 +9,11 @@ export class SidebarComponent {
 
   @Input()
   afficheFormulaire: boolean = false;
+  @Output()
+  clickRdv = new EventEmitter();
 
-  appelFormulairePriseRdv(afficheFormulaire: boolean): boolean {
-    console.log('afficheFormulaire', afficheFormulaire);
-    return !afficheFormulaire;
+  appelFormulairePriseRdv(): void {
+    this.afficheFormulaire = !this.afficheFormulaire;
+    this.clickRdv.emit(this.afficheFormulaire);
   }
 }

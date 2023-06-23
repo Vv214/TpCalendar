@@ -1,1 +1,11 @@
-#contentApp {}
+.container {
+    display: flex;
+}
+
+.sidebar-container {
+    width: 300px;
+}
+
+.sidebar {
+    width: 100px;
+}
