@@ -30,16 +30,17 @@ export class FormComponent {
   constructor(private rendezVousService: LesRendezVousService) { }
   ngOnInit(): void {
 
-   }
+  }
 
   onSubmit() {
     const client: Client = new Client(this.client.prenom, this.client.nom, this.client.message, this.client.telephone, false, this.client.email);
     client.setId(this.idClient);
     this.idClient++;
 
-    const creneau: Creneau = new Creneau(new Date());
+    const creneau: Creneau = new Creneau(new Date);
     creneau.setId(this.idCreneau);
     creneau.makeItNoAvailable();
+    creneau.date = this.creneau.date;
     this.idCreneau++;
 
     const rdv: rendezVous = new rendezVous(creneau, client);
@@ -47,27 +48,27 @@ export class FormComponent {
     this.idRendezVous++;
 
     // Ajouter le rdv  à la liste dans le service partagé
-    if(this.rendezVousService.listeRendezVous.push(rdv)){
-      
+    if (this.rendezVousService.listeRendezVous.push(rdv)) {
+
       let newWin = window.open("about:blank", "hello", "width=600,height=200");
-    
-      newWin?.document.write("<h4>"+
-                            "Merci M./Mme : "+
-                            rdv.client.prenom+
-                            " "+
-                            rdv.client.nom+
-                            "<br>"+
-                            "rendes-vous pour le : "+rdv.creneau.date.toLocaleDateString()+
-                            " à "+
-                            rdv.creneau.date.getHours()+
-                            "h"+
-                            rdv.creneau.date.getMinutes()+
-                            ", enregistré avec "+
-                            "<em>"+
-                            "SUCCES"+
-                            "</em>"+
-                            "</h4>");
-  
+
+      newWin?.document.write("<h4>" +
+        "Merci M./Mme : " +
+        rdv.client.prenom +
+        " " +
+        rdv.client.nom +
+        "<br>" +
+        "rendes-vous pour le : " + rdv.creneau.date.toLocaleDateString() +
+        " à " +
+        rdv.creneau.date.getHours() +
+        "h" +
+        rdv.creneau.date.getMinutes() +
+        ", enregistré avec " +
+        "<em>" +
+        "SUCCES" +
+        "</em>" +
+        "</h4>");
+
     }
 
     // rein,istialiser le formulaire 

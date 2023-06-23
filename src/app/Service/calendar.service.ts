@@ -22,7 +22,7 @@ export class CalendarService {
     this.grilleMois = ['January', 'February', 'March', 'April', 'May',
       'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.nombreJoursMoisAn = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    this.today = new Date(2023, 2);
+    this.today = new Date();
     this.moisActuel = this.today.getMonth();
     this.moisAAfficher = this.moisActuel;
     this.annee = this.today.getFullYear();

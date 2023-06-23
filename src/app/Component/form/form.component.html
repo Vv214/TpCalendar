@@ -60,6 +60,16 @@
         <div *ngIf="email.errors && myForm.submitted" class="error">
             <span *ngIf="email.errors?.['required']">Le champ e-mail est requis</span>
         </div>
+        <div class="row">
+            <label for="date">Date</label>
+            <input id="date" name="date" placeholder="Choix de la date" type="date" [(ngModel)]="creneau.date" required>
+            #date="ngModel" required>
+        </div>
+
+        <!-- Message d'erreurs de email -->
+        <div *ngIf="email.errors && myForm.submitted" class="error">
+            <span *ngIf="email.errors?.['required']">Le champ e-mail est requis</span>
+        </div>
 
         <div class="row">
             <button class="button" type="submit" (click)="afficheCreneau=appelAffichageCreneau(afficheCreneau)">Choisir
