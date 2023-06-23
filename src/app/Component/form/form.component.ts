@@ -58,11 +58,11 @@ export class FormComponent {
         " " +
         rdv.client.nom +
         "<br>" +
-        "rendes-vous pour le : " + rdv.creneau.date.toLocaleDateString() +
-        " à " +
-        rdv.creneau.date.getHours() +
-        "h" +
-        rdv.creneau.date.getMinutes() +
+        "rendes-vous pour le : " + rdv.creneau.date +
+
+        // rdv.creneau.date.getHours().toLocaleString() +
+        // "h" +
+        // rdv.creneau.date +
         ", enregistré avec " +
         "<em>" +
         "SUCCES" +
