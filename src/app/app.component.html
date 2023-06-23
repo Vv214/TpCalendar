@@ -1,12 +1,12 @@
 <div>
   <app-navbar class="navbar"></app-navbar>
   <div class="container">
-    <div class="ouais">
+    <div class="sidebar-container">
       <app-sidebar (clickRdv)="displayForm($event)" class="sidebar"></app-sidebar>
     </div>
     <div *ngIf="printForm">
       <app-form></app-form>
     </div>
   </div>
-  <app-admin></app-admin>
+  <app-footer></app-footer>
 </div>

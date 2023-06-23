@@ -2,16 +2,18 @@
     <p class="month">{{moisActuel}}</p>
     <p>{{nombreJoursMois}}</p>
 </div> -->
-<div class="divcss">
-    <div class="week-container">
-        <div *ngFor="let jour of grilleSemaine" class="name-week">
-            <p class="jour">{{ jour }} </p>
-        </div>
-    </div>
+<div class="calendar-container">
     <div class="divcss">
-        <div class="day-container">
-            <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours">
-                <p class="day-text">{{jour}}</p>
+        <div class="week-container">
+            <div *ngFor="let jour of grilleSemaine" class="name-week">
+                <p class="jour">{{ jour }} </p>
+            </div>
+        </div>
+        <div class="divcss">
+            <div class="day-container">
+                <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours">
+                    <p class="day-text">{{jour}}</p>
+                </div>
             </div>
         </div>
     </div>
