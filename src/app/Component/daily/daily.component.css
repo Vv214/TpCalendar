@@ -11,3 +11,10 @@ body {
     border: 1px solid black;
 
 }
+
+.afficher-month,
+.afficher-annee {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

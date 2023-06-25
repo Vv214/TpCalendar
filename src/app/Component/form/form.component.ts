@@ -4,6 +4,9 @@ import { LesRendezVousService } from 'src/app/Service/LesRendezVousService';
 import { Creneau } from 'src/model/Creneau';
 import { lesRendezVous } from 'src/model/lesRendezVous';
 import { rendezVous } from 'src/model/rendez_vous';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -16,22 +19,30 @@ export class FormComponent {
   idRendezVous: number = 0;
   idCreneau: number = 0;
   client: Client = new Client('', '', '', '', false, '');
+  jour!: string;
+  mois!: string;
+  heure!: number;
+  creneau: Creneau = new Creneau(new Date());
+  heureChoisi!: number;
+  heureActuel: Date = new Date;
+
 
   @Input()
   afficheCreneau: boolean = false;
 
   client2: Client = new Client('', '', '', '', false, '');
-  creneau: Creneau = new Creneau(new Date());
 
 
   lst: lesRendezVous = new lesRendezVous();
   listeRDV: rendezVous[] = this.lst.listeRendezVous;
   // injection du servive contenat la liste des renndez-vous
-  constructor(private rendezVousService: LesRendezVousService) { }
+  constructor(private rendezVousService: LesRendezVousService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
-
+    this.jour = this.route.snapshot.queryParams['id'];
+    this.mois = this.route.snapshot.queryParams['mois'];
+    this.heure = this.route.snapshot.queryParams['heure'];
+    this.heureChoisi = (this.creneau.date.setHours(this.heure) - this.heureActuel.getHours());
   }
-
   onSubmit() {
     const client: Client = new Client(this.client.prenom, this.client.nom, this.client.message, this.client.telephone, false, this.client.email);
     client.setId(this.idClient);
