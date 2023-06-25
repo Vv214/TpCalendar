@@ -1,9 +1,4 @@
 <form form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()">
-    <!-- <div>
-        Form submitted ? {{form.submitted}}
-        Form valid ? {{form.valid}}
-        Form invalid ? {{form.invalid}}
-    </div> -->
 
     <div class="container">
         <div class="row">
@@ -67,14 +62,14 @@
         </div>
 
         <!-- Message d'erreurs de email -->
-        <div *ngIf="email.errors && myForm.submitted" class="error">
-            <span *ngIf="email.errors?.['required']">Le champ e-mail est requis</span>
+        <div *ngIf="creneau.date && myForm.submitted" class="error">
+            <span *ngIf="email.errors?.['required']">Le champ date est requis</span>
         </div>
 
         <div class="row">
-            <button class="button" type="submit" (click)="afficheCreneau=appelAffichageCreneau(afficheCreneau)">Choisir
+            <button class="button" type="submit" (click)="afficheCreneau=appelAffichageCreneau(afficheCreneau)">Valider
                 votre
-                créneau</button>
+                rendez-vous</button>
         </div>
         <div *ngIf="myForm.valid && myForm.submitted">
             <p *ngIf="afficheCreneau===true; else notAfficheCreneau">
