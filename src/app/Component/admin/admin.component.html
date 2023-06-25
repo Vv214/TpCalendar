@@ -1,104 +1,111 @@
-<h1> Administrateur des rendez-vous</h1>
-<div class="admin">
-  <div id="listerlesRendezVous">
-    <button (click)="listerLesRendezVous()">
-      <h3>Lister les rendez-vous</h3>
-    </button>
-    <div *ngIf="afficherRendezVous">
-      <div *ngFor="let rdv of listeRendezVous" (click)="consulterRendezVous(rdv)" class="detailRDV">
+<h1 class="title"> Administrateur des rendez-vous</h1>
+<div class="admin-container">
+  <div class="admin">
+    <div id="listerlesRendezVous">
+      <button (click)="listerLesRendezVous()">
+        <h3>Lister les rendez-vous</h3>
+      </button>
+      <div *ngIf="afficherRendezVous">
+        <div *ngFor="let rdv of listeRendezVous" (click)="consulterRendezVous(rdv)" class="detailRDV">
 
-        <span><em>Numero ° :{{ rdv.id }}</em></span><br>
-        <span><em>Nom :{{ rdv.client.nom }}</em></span><br>
-        <span>Date :{{ rdv.creneau.date}}h</span><br>
-        <span><button (click)="detailRDV(rdv.id)">Details rdv</button></span>
-        <span><button (click)="editerRDV(rdv.id)">modifier</button></span>
-        <span><button (click)="supprimerRDV(rdv.id)" style="background-color: red;">Supprimer</button></span>
+          <span><em>Numero ° :{{ rdv.id }}</em></span><br>
+          <span><em>Nom :{{ rdv.client.nom }}</em></span><br>
+          <span>Date :{{ rdv.creneau.date}}h</span><br>
+          <span><button (click)="detailRDV(rdv.id)">Details rdv</button></span>
+          <span><button (click)="editerRDV(rdv.id)">modifier</button></span>
+          <span><button (click)="supprimerRDV(rdv.id)" style="background-color: red;">Supprimer</button></span>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="detailRendezVous">
+      <h3>Rendez-vous nemero ° : <span>{{rdvCourant.id}}</span></h3>
+      <div class="divcss">
+        <table style="border: 1px solid black ;">
+          <tr>
+            <td>Nom</td>
+            <td>{{rdvCourant.client.nom}}</td>
+          </tr>
+
+          <tr>
+            <td>Prenom</td>
+            <td>{{rdvCourant.client.prenom}}</td>
+          </tr>
+          <tr>
+            <td>Telephone</td>
+            <td>{{rdvCourant.client.telephone}}</td>
+          </tr>
+          <tr>
+            <td>E-mail</td>
+            <td>{{rdvCourant.client.email}}</td>
+          </tr>
+          <tr>
+            <td>Message</td>
+            <td>{{rdvCourant.client.message}}</td>
+          </tr>
+          <tr>
+            <td>Date rendez-vous</td>
+            <td>{{rdvCourant.creneau.date}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="container" id="editerRendezVous">
+      <h3>Editer le rendez-vous <span>{{rdvCourant.id}}</span></h3>
+      <div *ngIf="rdvCourant">
+        <div>
+          <form>
+            <div>
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" placeholder="Changer le nom.." [(ngModel)]="rdvCourant.client.nom">
+            </div>
+            <div>
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" type="text" placeholder="Changer le prénom.."
+                [(ngModel)]="rdvCourant.client.prenom">
+            </div>
+            <div>
+              <label for="telephone">telephone</label>
+              <input id="telephone" name="telephone" type="text" placeholder="Changer le tél.."
+                [(ngModel)]="rdvCourant.client.telephone">
+            </div>
+            <div>
+              <label for="email">e-mail</label>
+              <input id="email" name="email" type="text" placeholder="Changer le mail.."
+                [(ngModel)]="rdvCourant.client.email">
+            </div>
+            <div>
+              <label for="date">Date du rendez-vous</label>
+              <input id="date" name="date" type="text" placeholder="Changer la date.."
+                [(ngModel)]="rdvCourant.creneau.date">
+            </div>
+            <button class="button" type="submit">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container" id="rechercherRendezVous">
+      <h3>Rechercher un rendez-vous </h3>
+      <form (ngSubmit)="findRDVbyClientName()">
+        <label for="name">Nom client </label>
+        <input type="text" name="name" placeholder="Chercher un client.." [(ngModel)]="nameClient">
+        <input class="button" type="submit" value="rechercher">
+      </form>
+      <div *ngIf="!RDVtrouve">
+        nom trouve
+      </div>
+      <div *ngIf="RDVtrouve">
+        <span><em>numero :{{ rdvCourant.id }}</em></span><br>
+        <span><em>nom :{{ rdvCourant.client.nom }}</em></span><br>
+        <span>date :{{ rdvCourant.creneau.date}}h</span><br>
+        <span><button (click)="detailRDV(rdvCourant.id)">Details rdv</button></span>
+        <span><button (click)="editerRDV(rdvCourant.id)">modifier</button></span>
+        <span><button (click)="supprimerRDV(rdvCourant.id)" style="background-color: red;">Supprimer</button></span>
         <hr>
       </div>
-    </div>
-  </div>
-  <div id="detailRendezVous">
-    <h3>Rendez-vous nemero ° : <span>{{rdvCourant.id}}</span></h3>
-    <table style="border: 1px solid black ;">
-
-      <tr>
-        <td>Nom</td>
-        <td>{{rdvCourant.client.nom}}</td>
-      </tr>
-
-      <tr>
-        <td>Prenom</td>
-        <td>{{rdvCourant.client.prenom}}</td>
-      </tr>
-      <tr>
-        <td>Telephone</td>
-        <td>{{rdvCourant.client.telephone}}</td>
-      </tr>
-      <tr>
-        <td>E-mail</td>
-        <td>{{rdvCourant.client.email}}</td>
-      </tr>
-      <tr>
-        <td>Message</td>
-        <td>{{rdvCourant.client.message}}</td>
-      </tr>
-      <tr>
-        <td>Date rendez-vous</td>
-        <td>{{rdvCourant.creneau.date}}</td>
-      </tr>
-    </table>
-  </div>
-
-  <div id="editerRendezVous" class="detail">
-    <h3>Editer le rendez-vous <span>{{rdvCourant.id}}</span></h3>
-    <div *ngIf="rdvCourant">
-      <div>
-        <form>
-          <div>
-            <label for="nom">Nom</label>
-            <input id="nom" name="nom" type="text" [(ngModel)]="rdvCourant.client.nom">
-          </div>
-          <div>
-            <label for="prenom">Prénom</label>
-            <input id="prenom" name="prenom" type="text" [(ngModel)]="rdvCourant.client.prenom">
-          </div>
-          <div>
-            <label for="telephone">telephone</label>
-            <input id="telephone" name="telephone" type="text" [(ngModel)]="rdvCourant.client.telephone">
-          </div>
-          <div>
-            <label for="email">e-mail</label>
-            <input id="email" name="email" type="text" [(ngModel)]="rdvCourant.client.email">
-          </div>
-          <div>
-            <label for="date">Date du rendez-vous</label>
-            <input id="date" name="date" type="text" [(ngModel)]="rdvCourant.creneau.date">
-          </div>
-          <button type="submit">Enregistrer</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-
-  <div id="rechercherRendezVous">
-    <h3>Rechercher un rendez-vous </h3>
-    <form (ngSubmit)="findRDVbyClientName()">
-      <label for="name">Nom client </label>
-      <input type="text" name="name" [(ngModel)]="nameClient">
-      <input type="submit" value="rechercher">
-    </form>
-    <div *ngIf="!RDVtrouve">
-      nom trouve
-    </div>
-    <div *ngIf="RDVtrouve">
-      <span><em>numero :{{ rdvCourant.id }}</em></span><br>
-      <span><em>nom :{{ rdvCourant.client.nom }}</em></span><br>
-      <span>date :{{ rdvCourant.creneau.date}}h</span><br>
-      <span><button (click)="detailRDV(rdvCourant.id)">Details rdv</button></span>
-      <span><button (click)="editerRDV(rdvCourant.id)">modifier</button></span>
-      <span><button (click)="supprimerRDV(rdvCourant.id)" style="background-color: red;">Supprimer</button></span>
-      <hr>
     </div>
   </div>
 </div>
