@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from 'src/app/Service/calendar.service';
+import { DailyComponent } from '../daily/daily.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -21,7 +23,8 @@ export class CalendarComponent implements OnInit {
   grilleMois!: string[];
   nombreJoursMoisAn!: Array<number>;
 
-  constructor(private calendarService: CalendarService) {
+
+  constructor(private calendarService: CalendarService, private router: Router) {
   }
 
   changeMoisPrecedent(mois: number, annee: number): void {
@@ -47,9 +50,9 @@ export class CalendarComponent implements OnInit {
     this.annee = this.calendarService.annee;
     this.nombreJoursMoisAn = this.calendarService.nombreJoursMoisAn;
   }
-  // affichageJour(){
-  // Todo
-  // }
+  affichageJour(id: string, mois: string) {
+    this.router.navigate(['/jour'], { queryParams: { id: id, mois: mois } });
+  }
 
   ngOnInit(): void {
     // INIT SERVICE TABLE

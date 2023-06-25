@@ -27,9 +27,15 @@
     <div class="divcss">
         <div class="day-container">
             <div class="day" *ngFor="let jour of tableauNombreJoursMoisEncours; let i = index"
-                [style.grid-column]="i === 0 ? premierJourMois : ''">
+                [style.grid-column]="i === 0 ? premierJourMois : ''"
+                (click)="affichageJour(jour, grilleMois[moisAAfficher])">
+                <a [routerLink]="['/jour']" [queryParams]="{ id: jour, mois : grilleMois[moisAAfficher] }"></a>
                 <div>
                     <p class="day-text">{{jour}}</p>
+                    <!-- <button class="day-text" (click)="affichageJour(jour)"><a [routerLink]="['/jour']"
+                            [queryParams]="{ id: jour }">
+                            {{jour}}
+                        </a></button> -->
                 </div>
             </div>
         </div>
