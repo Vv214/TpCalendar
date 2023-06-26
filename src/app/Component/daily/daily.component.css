@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-right: 50px;
 }
 
 .afficher-month,
@@ -50,4 +51,8 @@ a {
 a:hover {
     text-decoration: none;
     color: black;
+}
+
+ul {
+    margin: 2px;
 }

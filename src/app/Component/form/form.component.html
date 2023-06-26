@@ -70,11 +70,5 @@
                 votre
                 rendez-vous</button>
         </div>
-        <div *ngIf="myForm.valid && myForm.submitted">
-            <p *ngIf="afficheCreneau===true; else notAfficheCreneau">
-                <app-calendar></app-calendar>
-            </p>
-            <ng-template #notAfficheCreneau></ng-template>
-        </div>
     </div>
 </form>
