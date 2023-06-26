@@ -2,10 +2,9 @@
 
     <div class="afficher-month"> {{jour}} et {{mois}} </div>
     <ul *ngFor="let creneau of creneaux">
-        <p class="creneau"> {{ creneau }}
-            <button (click)="formAppel(jour, mois, creneau)">
-                <a [routerLink]="['/jour']" [queryParams]="{ id: jour, mois : mois, creneau : creneau }">
-                    Choisir ce Rendez Vous</a></button>
+        <p class="creneau" (click)="formAppel(jour, mois, creneau)"> {{ creneau }}
+            <a [routerLink]="['/jour']" [queryParams]="{ id: jour, mois : mois, creneau : creneau }">
+                <br> Choisir ce Rendez Vous</a>
         </p>
     </ul>
 </div>
